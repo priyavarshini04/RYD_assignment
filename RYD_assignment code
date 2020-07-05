@@ -1,0 +1,286 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 52,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import json\n",
+    "f=open('eco.txt',encoding=\"utf8\")\n",
+    "\n",
+    "#creating an instance s which holds all the content of the text file( sample.txt)\n",
+    "#s=f.read()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "s=f.read()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## For debugging"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1. Which bank is the Banker of the Banks? –RBI\n",
+      "2. For international payments, to which currency is the Indian currency linked? –American Dollars\n",
+      "3. Where is the headquarter of East African Development Bank? –Uganda\n",
+      "4. In which year Statutory Liquidity Ratio was first imposed on banks? –1949\n",
+      "5. The Unclaimed deposits are those deposits which haven’t been operated for how many years? –10 years or more\n",
+      "6. CENVAT is associated with______? –Rate of Indirect Tax\n",
+      "7. Gilt edged means______? –Market of govt. securities\n",
+      "8. What is the effect of Deficit financing? –Inflation\n",
+      "9. Who was the first Indian Governor of RBI? –Shachindra Ray\n",
+      "10. The principal sources of revenue to the State Government in India is______? –Sales Tax\n",
+      "11. Indias Economic Summit was held in December 1999, in________? –New Delhi\n",
+      "12. When a person has a saving account in the bank, the bank assumes\n",
+      "the position of _________? –Debtor\n",
+      "13. Which is the largest Private Sector Bank in India? –HDFC Bank\n",
+      "14. Which ministry formulates fiscal policy? –Finance Ministry\n",
+      "15. In which year SIDBI was established? –1990\n",
+      "16. What is the highest denomination of currency notes in circulation as legal tender in India at present? –Rs. 2000\n",
+      "17. How many banks were nationalized in 1969? –14\n",
+      "18. In April 1980 how many banks were nationalized? –Six\n",
+      "19. When was decimal coinage introduced in India? –1957\n",
+      "20. One rupee notes contain the signature of_______? –Finance Secretary, GOI\n",
+      "21. Which is treated as artificial currency? –SDR\n",
+      "22. Companies pay corporation tax on their______? –Incomes\n",
+      "23. What was the earlier name of the WTO? –GATT\n",
+      "24. If saving exceeds investment, what will be the effect on national income_______? –Remains constant\n",
+      "25. Which is the oldest stock exchange in Asia? –Bombay Stock Exchange\n",
+      "26. Temporary tax levied to obtain additional revenue is called_________? –Fee\n",
+      "27. Which European country is the guarantor of Bank of Central African States? –France\n",
+      "28. When was Consumer Protection Act(COPRA) passed? –1986\n",
+      "29. The Money Order system in India was introduced in the year________? –1880\n",
+      "30. Investment in public works is known as_______? –Capital Expenditure\n",
+      "31. Where are the headquarters of IMF and World Bank located? –Both Washington DC\n",
+      "32. Who appoints Banking Ombudsman? –RBI\n",
+      "33. In which year was Railway Budget in India separated from general budget? –1924\n",
+      "34. Which is the best measure of economic growth of a country? –GNP\n",
+      "35. Economic growth is usually coupled with_____? –Inflation\n",
+      "36. Which is the oldest stock exchange in the world? –Amsterdam Stock Exchange\n",
+      "37. Taxation and the government’s expenditure policy are dealt under which policy? –Fiscal Policy\n",
+      "38. If the price of an inferior good falls, what about its demand? –Remains Constant\n",
+      "39. Which type of unemployment mostly found in India? –Disguised Unemployment\n",
+      "40. Which is the largest Public Sector Bank in India? –State Bank of India\n",
+      "41. What is the main source of revenue to meet different expenditures? –Internal Borrowings\n",
+      "42. Bouncing of cheques has become an offence. What is the punishment for the same? –6 months imprisonment\n",
+      "43. The main source of National Income in India is______? –Agricultural Sector\n",
+      "44. A crossed cheque is one, which can be encased only at which bank? –SBI\n",
+      "45. The currency convertibility concept in its original form originated in? –Bretton Woods Agreement\n",
+      "46. The difference between GNP & GDP is______? –Capital Depreciation\n",
+      "47. 'Brent ' Index is associated with ______? –Crude oil prices\n",
+      "48. The Foreign Exchange Management Act(FEMA) was passed in which year? –1999\n",
+      "49. Which plan is also known as 'Gadgil Yojana'? –3rd FYP\n",
+      "50. Who presented the first union budget of Independent India? –RK Shanmukham Chetty\n",
+      "51. States earn maximum revenue through? –Commercial Taxes\n",
+      "52. Short-term finance is usually for a period ranging up to? –12 months\n",
+      "53. When did India become a member of international Monetary Fund (IMF)? –1947\n",
+      "54. Who coined the term ‘Hindu rate of growth’ for Indian Economy? –Raj Krishna\n",
+      "55. When was the National Bank for Agriculture and Rural Development (NABARD) set up? –1982\n",
+      "56. Where are the headquarters of United Nations Conference on Trade and Development (UNCTAD)? –Geneva\n",
+      "57. Who is called the ‘Father of Economics’? –Adam Smith\n",
+      "58. Which sector of Indian Economy has shown remarkable expansion during the last decade? –Tertiary Sector\n",
+      "59. Which state has the lowest per capita income? –Bihar\n",
+      "60. World Development Report is an annual publication of_________? –International Bank of Reconstruction & Development\n",
+      "61. The slogan of ‘Garibi Hatao’ (Remove Poverty) was launched in which FYP? –4th FYP\n",
+      "62. ‘Golden Handshake Scheme’ is associated with______? –Voluntary Retirement\n",
+      "63. Who has presented the Union Budget of India maximum number of times? –Morarji Desai\n",
+      "64. Who is the chairman of 14th Finance Commission? –Y. V. Reddy\n",
+      "65. The second Five Year plan was based on_____? –Mahalanobis model\n",
+      "66. The first devaluation of Indian currency took place in which year? –1949\n",
+      "67. VAT has been introduced on the recommendation of which commission? –L. K. Jha Commission\n",
+      "68. In which year was Minimum inflation in post economic reform? –1999-2000\n",
+      "69. Who was the Chairman of the first Finance Commission? –K.C. Niyogi\n",
+      "70. Those goods which have positive relationship between price and quantity demanded are called as ….? –Giffen Goods\n",
+      "71. On July 12, 1982, the ARDC was merged into_______? –NABARD\n",
+      "72. Which Indian got Nobel Prize for Economics? –Amartya Sen\n",
+      "73. National Income estimates in India is prepared by _______? –Central Statistical Organization\n",
+      "74. Who wrote the book ‘Planned Economy for India’? –M. Visvesvaraya\n",
+      "75. Which is the oldest Development Financial Institution of India? –IFCI\n",
+      "76. When was EXIM Bank set-up? –1982\n",
+      "77. Which is the ‘Slack Season’ in the Indian Economy? –January-June\n",
+      "78. To meet the need of whom, the concept of Land Development Bank has been developed? –Farmers\n",
+      "79. When was the Rolling plan designed? –1978-83\n",
+      "80. Which country is the largest debtor of UNO? –U.S.\n",
+      "81. Which was first Commercial Bank of India? –Hindustan Bank\n",
+      "82. Participatory Notes (PNs) are associated with which investors? –Foreign Institutional Investments\n",
+      "83. A new private bank is established under which act? –Companies Act 1956\n",
+      "84. How many country are represented in International Monetary Fund (IMF)? –189\n",
+      "85. In which plan was the objective of self-reliance and zero net foreign aid was declared? –Fourth 5 year plan\n",
+      "86. National Rural Development Institute is situated at_______? –Hyderabad\n",
+      "87. Name the oldest insurance company of India? –Oriental Life Insurance Company\n",
+      "88. On which date a Bank publishes its balance sheet? –31st march\n",
+      "89. Excise duty is a tax levied on the_______? –Production of goods\n",
+      "90. Which state stands first in the length of roads in the country? –Maharashtra\n",
+      "91. Deficit financing means that the government borrows money from the______? –RBI\n",
+      "92. “Bad money (if not limited in quantity) drives good money out of circulation.” is the law known as______? –Gresham's law\n",
+      "93. The \"\"Garibi Hatao\"\" slogan was coined in______? –1971\n",
+      "94. When was the Reserve Bank of India taken over by the Government? –1948\n",
+      "95. Who is considered the guardian of the Public Purse? –CAG\n",
+      "96. In which year Swarn Jayanti Gram Swarozgar Yojna came into being? –1st April 1999\n",
+      "97. The philosophy of 'Laissez-faire' is associated with? –Industrial States\n",
+      "98. Where in Indian are coins minted? –Mumbai, Calcutta & Hyderabad\n",
+      "99. In India, in which year was the service tax first introduced? –1994\n",
+      "100. National Rural Employment Guarantee Scheme (NREGS) came into force in which year? –2006"
+     ]
+    }
+   ],
+   "source": [
+    "for i in s:\n",
+    "    print(i,end=\"\")\n",
+    "    "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Filtering Questions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "st=0\n",
+    "e=0\n",
+    "li=[]\n",
+    "liq=[]\n",
+    "sol='?'\n",
+    "count=1\n",
+    "for i in range(1,101):\n",
+    "    start = s.find(str(count)+'.')\n",
+    "    end=s.find('?', start)\n",
+    "    e1=s.find('–', end)\n",
+    "    en=e1+45\n",
+    "    li.append(s[start:end]+'?')\n",
+    "    liq.append(s[e1+1:en])\n",
+    "    #print(s[start:end]+'?')\n",
+    "    #print(s[e1:en])\n",
+    "    count+=1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Filtering Answers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "too many values to unpack (expected 2)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-98-7e7bf98ccd66>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m      3\u001b[0m \u001b[1;32mfor\u001b[0m \u001b[0mi\u001b[0m \u001b[1;32min\u001b[0m \u001b[0mliq\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      4\u001b[0m     \u001b[1;32mif\u001b[0m \u001b[1;34m'\\n'\u001b[0m \u001b[1;32min\u001b[0m \u001b[0mi\u001b[0m\u001b[1;33m:\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 5\u001b[1;33m         \u001b[0ma\u001b[0m\u001b[1;33m,\u001b[0m\u001b[0mb\u001b[0m\u001b[1;33m=\u001b[0m\u001b[0mi\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0msplit\u001b[0m\u001b[1;33m(\u001b[0m\u001b[1;34m'\\n'\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m\u001b[0;32m      6\u001b[0m         \u001b[0mli3\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mappend\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mstr\u001b[0m\u001b[1;33m(\u001b[0m\u001b[0mcnt\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m+\u001b[0m\u001b[1;34m'. '\u001b[0m\u001b[1;33m+\u001b[0m\u001b[0ma\u001b[0m\u001b[1;33m)\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0;32m      7\u001b[0m \u001b[1;33m\u001b[0m\u001b[0m\n",
+      "\u001b[1;31mValueError\u001b[0m: too many values to unpack (expected 2)"
+     ]
+    }
+   ],
+   "source": [
+    "li3=[]\n",
+    "cnt=1\n",
+    "for i in liq:\n",
+    "    if '\\n' in i:\n",
+    "        a,b=i.split('\\n')\n",
+    "        li3.append(str(cnt)+'. '+a)\n",
+    "        \n",
+    "    else:\n",
+    "        li3.append(str(cnt)+'. '+i)\n",
+    "    cnt+=1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Dumping questions into JSON"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 91,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "o = open(\"economics_question.json\", \"w\") \n",
+    "json.dump(li, o, indent = 4, sort_keys = False) \n",
+    "o.close() "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Dumping answers into json"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 92,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "o = open(\"economics_answers.json\", \"w\") \n",
+    "json.dump(li3, o, indent = 4, sort_keys = False) \n",
+    "o.close() "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
